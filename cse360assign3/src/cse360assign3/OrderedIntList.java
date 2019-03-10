@@ -11,51 +11,84 @@ public class OrderedIntList {
 
 	public void insert(int element) {
 
-		//iterating variables
+		/**
+		 * Iterating variables
+		 */
 		int j = 0;
 		int i = 0;
+		Boolean indexFound = false;
+		int size = size() + 1;
+		int length = length();
 
-		//inserts the element to array and checks to make sure that its in the correct location
-		for (i = 0; i < counter; i++) {
+		
+		/**
+		 * Checks to see if the element already exists in the array
+		 * Searches for the position that the element needs to be placed
+		 * sets J to the place the element needs to be placed
+		 */
+		for (i = 0; i < counter && indexFound == false; i++) {
 			if (element <= orderedIntList[i]) {
 				if (element == orderedIntList[i]) {
 					return;
 				}
-				break;
+				indexFound = true;
 			}
 			j++;
 		}
-		//This checks for if the elements are greater than 10
-		if (counter == 10) {
-			counter = counter - 1;
-		}
 		
-		if (j == 10) {
-			j = j - 1;
+		
+		if (size == length) {
+			int[] copy_Ary = new int[length + (length/2)];
+			for (i = 0; i < length-1; i++) {
+				if (orderedIntList[i] != 0) {
+					copy_Ary[i] = orderedIntList[i];
+				}
+			}
+			orderedIntList = copy_Ary;
+			
+		}
+		/**
+		 * Checks to see if the counter and j index is greater than 1 if it is set them to 9
+		 */
+		if (counter == length()) {
+			counter = length()-1;
+		}
+		if (j == length()) {
+			j = length() - 1;
 		}
 		
 
-		// move the elements and deletes the last element in the array
+		
 		for (i = counter; i > j;) {
 			orderedIntList[i] = orderedIntList[--i];
 		}
+		
+		/**
+		 * Adds 1 to the counter and sets the new element to the j index
+		 */
 		counter++;
 		orderedIntList[j] = element;
 		
 	}
 
+
 	//Method to print out the array function
 	public void print() {
-		for (int i = 0; i < counter; i++) {
+		int length = length();
+		for (int i = 0; i < length; i++) {
 			if (i % 5 == 0) {
 				System.out.println();
 			}
-			System.out.print(orderedIntList[i] + "\t");
+			if (orderedIntList[i] != 0) {
+				System.out.print(orderedIntList[i] + "\t");
+			}
 		}
 	}
+	
+	
 	public int size() {
 		int counter = 0;
-		for(int i = 0; i <= orderedIntList.length; i++) {
+		for(int i = 0; i <= orderedIntList.length-1; i++) {
 			if (orderedIntList[i] != 0) {
 				counter++;
 			}
@@ -63,20 +96,45 @@ public class OrderedIntList {
 		return counter;
 	}
 	
+	
 	public int length() {
 		int counter = 0;
-		for(int i = 0; i <= orderedIntList.length; i++) {
+		for(int i = 0; i <= orderedIntList.length-1; i++) {
 			counter++;
 		}
 		return counter;
 	}
+	
+	
+	
 	public void delete(int key) {
-		for (int i = 0; i <= orderedIntList.length; i++) {
+		for (int i = 0; i <= orderedIntList.length-1; i++) {
 			if (i == key) {
 				orderedIntList[i] = 0;
+				for (int j = i; j < orderedIntList.length-1; j++ ) {
+					orderedIntList[j] = orderedIntList[j+1];
+				}
 			}
 		}
+		
+		//Checks to see if the size is less than half of the length of the array
+		//If it is less than half then the array is copied to a new array and the
+		//old one is deleted
+		int size = size();
+		int length = length();
+		
+		if (size == length/2 || size < length/2 ) {
+			int[] newOrderedIntList = new int[length/2];
+			for (int i = 0; i < length/2; i++) {
+				newOrderedIntList[i] = orderedIntList[i];
+			}
+			orderedIntList = newOrderedIntList;
+		}
 	}
+	
+	
+	
+	
 }
 
   
