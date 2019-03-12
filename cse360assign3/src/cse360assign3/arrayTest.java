@@ -18,7 +18,7 @@ public class arrayTest {
 		list.insert(10);
 		
 		
-		list.print();
+		System.out.print(list.toString());
 		
 		System.out.println();
 		
@@ -35,11 +35,17 @@ public class arrayTest {
 		list.delete(1);
 		
 		System.out.println();
-		list.print();
+		System.out.print(list.toString());
+		System.out.println();
+		System.out.println();
 		
 		System.out.println(list.length());
 		System.out.println(list.size());
+		System.out.println();
+		System.out.println();
 		
+		
+		System.out.print(list.toString());
 		
 	}
 
