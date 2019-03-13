@@ -53,7 +53,7 @@ class OrderedIntListTest {
 		tList.insert(3);
 		
 		tList.delete(1);
-		assertEquals("1   3",tList.toString());
+		assertEquals("1 3",tList.toString());
 		
 	}
 
@@ -66,13 +66,14 @@ class OrderedIntListTest {
 		tList.insert(4);
 		tList.insert(5);
 		tList.insert(6);
+		tList.insert(7);
 		tList.insert(8);
 		tList.insert(9);
 		tList.insert(10);
 		
 		
-		assertEquals("1\t2\t3\t4\t5\n"
-				   + "6\t7\t8\t9\t10",tList.toString());
+		assertEquals("1 2 3 4 5\n"
+				   + "6 7 8 9 10",tList.toString());
 	}
 
 }

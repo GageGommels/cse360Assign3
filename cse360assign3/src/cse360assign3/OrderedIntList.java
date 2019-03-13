@@ -172,15 +172,17 @@ public class OrderedIntList {
 	 */
 	public String toString() {
 		aryString = "";
+		// variable that will allow us to keep track of how many elements have been added to the String
+		int aryString_counter = 0;
 		for (int i = 0; i < length(); i++) {
-			if (i % 5 == 0) {
-				aryString = aryString + "\n";
+			if(orderedIntList[i] != 0) {
+				aryString = aryString + orderedIntList[i];
+				aryString_counter++;
 			}
-			if (orderedIntList[i] != 0) {
-				if (size() == i-1) {
-					aryString = aryString + orderedIntList[i];
-				}
-				aryString = aryString + orderedIntList[i] + "\t";
+			if(aryString_counter % 5 != 0 && i != size()-1 && orderedIntList[i] != 0) {
+				aryString = aryString + " ";
+			} else if (aryString_counter % 5 == 0 && aryString_counter != 0 && orderedIntList[i] != 0 && i != size()-1) {
+				aryString = aryString + "\n";
 			}
 		}
 		return aryString;

@@ -43,7 +43,7 @@ public class arrayTest {
 		System.out.println(list.size());
 		System.out.println();
 		System.out.println();
-		
+	
 		
 		System.out.print(list.toString());
 		
